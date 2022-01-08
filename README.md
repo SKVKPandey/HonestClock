@@ -25,6 +25,7 @@ We have Developed the Front-End Part Completly and Working on the Back-End and D
 <br>- Parental Control feature that will allow parents to access app usage and time spent per app data.</br>
 <br>- Graphical Interpretation for better understanding.</br>
 <br>- User Friendly GUI.</br>
+<br>- Rescuing user's time and Focus keeper which builds motivation to complete task </br>
 <br>- Feature to run in background.</br>
 
 ## Future Scopes
