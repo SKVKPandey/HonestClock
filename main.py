@@ -18,6 +18,13 @@ from kivy.lang import Builder
 from os import mkdir, chdir, startfile, getcwd, listdir, remove
 from datetime import date, datetime
 from sqlite3 import connect
+from matplotlib import pyplot as plt
+from win32gui import GetForegroundWindow
+import psutil
+import time
+import win32process
+import keyboard
+
 
 
 code1='''
@@ -525,6 +532,31 @@ ScreenManager:
                 Widget: 
 '''
 
+'''
+#Calculating and storing required data for ploting graph
+process_time={}
+timestamp = {}
+total_time = 0
+
+while True:
+    current_app = psutil.Process(win32process.GetWindowThreadProcessId(GetForegroundWindow())[1]).name().replace(".exe", "")
+    timestamp[current_app] = int(time.time())
+    time.sleep(1)
+    if current_app not in process_time.keys():
+        process_time[current_app] = 0
+    process_time[current_app] = process_time[current_app]+int(time.time())-timestamp[current_app]
+    #print(process_time)
+    if keyboard.is_pressed('q'):
+        break
+
+values = process_time.values()
+for i in values:
+    total_time+= i
+
+#for keys in process_time:
+#    print(keys, " : ", process_time[keys])
+'''
+
 class OptionScreen(Screen):
     pass
             
@@ -595,7 +627,25 @@ class AppScreen(Screen):
     pass
 
 class DataScreen(Screen):
-    pass
+    
+    def bar_graph(self):
+        
+        pass
+
+
+    def pie_chart(self):
+        apps_list = process_time.keys()      #list of apps which are analysed
+        explode = []
+        for i in range(len(apps_list)):
+            explode.append(0.1)
+
+        plt.pie(values, labels= apps_list, explode = explode, shadow = True, startangle = 90, autopct = "%1.2f%%")
+        
+        plt.title("Screen Usage")
+        plt.tight_layout()
+
+        plt.savefig("C:\\Users\\Aayush A Patel\\Desktop\\hc\\HonestClock\\graph.png") #location to save the png of the graph
+
 
 class AboutScreen(Screen):
     pass
