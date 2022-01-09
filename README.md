@@ -21,6 +21,8 @@ Harsh
 <br>- Two Modes of Registration: Normal and Parent.</br>
 <br>- Database to save all informations regarding user registration.</br>
 <br>- All Screens with respective buttons connecting them with one another.</br>
+<br>- Graphs Included.</br>
+<br>- App list Included.</br>
 
 ## Concept Behind The Application
 <br>- Honest Clock has been made by using KivyMD which is a Python Package used to develop Cross-Platform Applications.</br>
