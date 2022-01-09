@@ -2,7 +2,12 @@
 HonestClock is an application that helps you to track your screen time wisely.
 
 ## Progress Till Now
-We have Developed the Front-End Part Completly and Working on the Back-End and Database of Application.
+We have Developed the Front-End and Back-End Part Completly.
+
+## Team Members
+Anshu
+Shashank
+Harsh
 
 ## Versions Of Python And Its Packages That Support HonestClock Application
 <br>- Python 3.6+</br>
