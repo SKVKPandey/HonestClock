@@ -34,27 +34,31 @@ try:
         l = a.split(";\n")
 except:
     pass
-
 myval=""
-mylist = [x.split(",") for x in l]
-myset = {x[0] for x in mylist}
-nval = dict()
-num = []
-
-for i in myset:
-    nval[i] = 0
 try:
+    mylist = [x.split(",") for x in l]
+    myset = {x[0] for x in mylist}
+    nval = dict()
+    num = []
+
+    for i in myset:
+        nval[i] = 0
+
     for i in mylist:
         if i[0] in list(myset):
             nval[i[0]] += int(i[1])
+
+
+    for i in nval:
+        num.append(nval[i])
+
 except:
     pass
-
-for i in nval:
-    num.append(nval[i])
-
-for i in myset:
-    myval += f"\t\t\t\t\t\t\tMDLabel:\n\t\t\t\t\t\t\t\ttext:'{i}'\n"
+try:
+    for i in myset:
+        myval += f"\t\t\t\t\t\t\tMDLabel:\n\t\t\t\t\t\t\t\ttext:'{i}'\n"
+except:
+    pass
 
 
 
@@ -785,18 +789,20 @@ class HonestClockApp(MDApp):
 HonestClockApp().run()
 
 
+try:
+    apps_list = nval.keys()     #list of apps which are analysed
+    explode = []
+    for i in range(len(apps_list)):
+        explode.append(0.1)
 
-apps_list = nval.keys()     #list of apps which are analysed
-explode = []
-for i in range(len(apps_list)):
-    explode.append(0.1)
+    plt.pie(num, labels= apps_list, explode = explode, shadow = True, startangle = 90, autopct = "%1.2f%%")
+            
+    plt.title("Screen Usage")
+    plt.tight_layout()
 
-plt.pie(num, labels= apps_list, explode = explode, shadow = True, startangle = 90, autopct = "%1.2f%%")
-        
-plt.title("Screen Usage")
-plt.tight_layout()
-
-plt.savefig("graph.png")
+    plt.savefig("graph.png")
+except:
+    pass
 
 data = HonestClockApp.data()
 val = ""
@@ -807,3 +813,4 @@ try:
         file.write(val)
 except Exception as e:
     pass
+    
